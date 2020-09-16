@@ -1,0 +1,20 @@
+.box {
+    
+    text-align: center;
+    height: 190px;
+    padding: 10px;
+
+    
+  
+}
+
+.box:nth-child(even) { /*paires*/
+    background: #CCC;
+  
+  
+}
+.box:nth-child(odd) { /* impaires*/
+    background: #AAA;
+   
+ 
+}
