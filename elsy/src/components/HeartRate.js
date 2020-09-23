@@ -1,13 +1,24 @@
 import React from 'react';
 import Icon from './core/Icon';
+import Slider from './core/Slider';
+
 class App extends React.Component {
     render(){
         return(
 
-           < div class = "box col-md-2 col-6"  style={{color: 'red'}}> 
-         <span> <Icon name="favorite"></Icon></span>
-           
-            <p style={{color: 'black'}}>Heart : {this.props.heart}</p>
+           < div class = "box col-md-2 col-6"> 
+         <span   style={{color: 'red'}}> <Icon name="favorite"></Icon></span>
+        
+            
+         <Slider    max = {this.props.max}
+           min= {this.props.min}
+           onChange = {this.props.onChange}
+           value = {this.props.heart}>
+        
+            </Slider>
+
+          {this.props.heart}
+          
            
            </div>
 
