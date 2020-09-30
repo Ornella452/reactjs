@@ -6,6 +6,9 @@ import List from './components/List';
 import Pay from './components/Pay';
 import Button from './components/core/Button';
 
+const min = 1;
+const max = 10;
+
 class App extends React.Component {
 
   constructor() {
@@ -16,44 +19,49 @@ class App extends React.Component {
 
     }
 
-    this.handleClick = this.handleClick.bind(this)
+  
+  }
 
+  handleClick(activeTab) {
+    this.setState({ activeTab })
 
   }
 
-  handleClick() {
-    switch (this.setState.onClick) {
-      case 'add': return <Add />
-      case 'list': return <List />
-      case 'pay': return <Pay />
-      
-    }
+
+  addItem(price, input){
+
   }
+
 
   render() {
     return (
 
-      <div className="App btn-group">
+      <div>
+
+
+        <div>
+
+          <Button onClick={this.handleClick.bind(this, 'add')}
+          
+            >Add</Button>
+          <Button onClick={this.handleClick.bind(this, 'list')}>List</Button>
+          <Button onClick={this.handleClick.bind(this, 'pay')}>Pay</Button>
 
 
 
-        <Button onClick={this.handleClick.bind(this, 'add')}><Add /></Button>
-        <Button onClick={this.handleClick.bind(this, 'list')}><List /></Button>
-        <Button onClick={this.handleClick.bind(this, 'pay')}><Pay /></Button>
-       
-
-
-
-
+        </div>
+        {this.state.activeTab === 'add' && <Add
+          min={min}
+          max={max}
+         callback={this.props.addItem}/>}
+        {this.state.activeTab === 'list' && <List />}
+        {this.state.activeTab === 'pay' && <Pay />}
 
 
       </div>
 
-
-
     )
   }
-
 
 }
 

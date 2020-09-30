@@ -4,20 +4,14 @@ class Button extends React.Component {
   
     render() {
         return (
-            <div>
+            <div className="btn-group   btn-group-toggle" data-toggle="buttons">
 
 
               <button className="btn btn-outline-primary  border-secondary text-secondary"
-              onClick={this.props.onClickFn}>
+              onClick={this.props.onClick}>
                   {this.props.isSelected}
               {this.props.children}
             </button>
-
-
-
-
-
-                
 
 
             </div>
