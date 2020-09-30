@@ -6,18 +6,23 @@ import List from './components/List';
 import Pay from './components/Pay';
 import Button from './components/core/Button';
 
-const min = 1;
-const max = 10;
+const min=1;
+const max=10;
 
 class App extends React.Component {
 
   constructor() {
     super();
+
+    this.addItem = this.addItem.bind(this)
+    
     this.state = {
       activeTab: "add",
       items: [],
 
     }
+
+    
 
   
   }
@@ -30,13 +35,24 @@ class App extends React.Component {
 
   addItem(price, input){
 
+    let obj = {
+      input:'input',
+      price:'price'
+     
+    }
+
+    let stock = this.state.items
+ 
+    stock.push(obj)
+    console.log(this.state.items)
+
   }
 
 
   render() {
     return (
 
-      <div>
+      <div className="App">
 
 
         <div>
@@ -53,7 +69,7 @@ class App extends React.Component {
         {this.state.activeTab === 'add' && <Add
           min={min}
           max={max}
-         callback={this.props.addItem}/>}
+         callback={this.addItem}/>}
         {this.state.activeTab === 'list' && <List />}
         {this.state.activeTab === 'pay' && <Pay />}
 

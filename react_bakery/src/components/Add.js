@@ -1,6 +1,6 @@
 import React from 'react';
-import Slider from './Slider';
-import 'rc-slider/assets/index.css';
+import Slider from '../components/Slider';
+
 
 
 
@@ -10,59 +10,58 @@ class Add extends React.Component {
 
         super()
 
+        
+        this.updateInput = this.updateInput.bind(this)
+        this.updatePrice = this.updatePrice.bind(this)
+        this.submitForm = this.submitForm.bind(this)
+
         this.state = {
             input: "",
             price: 1
         }
-
-        this.updateInput = this.updateInput.bind(this)
-        this.updatePrice = this.updatePrice.bind(this)
-        this.submitForm = this.submitForm(this)
-
 
 
     }
  
 
     updateInput(evt){
-        evt.preventDefault()
         this.setState({input: evt.target.value}, () => {
               console.log(this.state.input)
             })
         
 
     }
-    updatePrice(evt){
-        this.setState({input : evt.target.value})
+    updatePrice(val){
+        this.setState({
+            price: val
+            
+        })
         
     }
-    submitForm(){
+    submitForm() {
+        this.props.callback(this.state.input, this.state.price)
       
-        console.log(this.state.input)
-        console.log(this.state.price)
-
     }
-
 
     render() {
         return (
-            <div className="container">
-                <input
+            <div className="container App">
+                <div className="form-inline App">
+                <input className="form-control"
                     type="text"
                     onChange={this.updateInput}
                 />
-
+                <button onClick={this.submitForm} className="btn btn-primary">Add</button>
+                </div>
+               
                 <Slider
                     max={this.props.max}
                     min={this.props.min}
-                    onChange={this.updatePrice}
                     value={this.state.price}
+                    onChange={this.updatePrice}
                     callback={this.props.callback}
                 />
-
-                {this.state.price}€
-
-                <button onClick={this.submitForm}>Add</button>
+                {this.state.price} €
             </div>
 
         )

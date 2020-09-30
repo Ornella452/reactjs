@@ -1,9 +1,29 @@
 import React from 'react';
 
 class List extends React.Component {
+
+   
+
     render(){
+
+        
             return(
-                <div>List</div>
+                <div>
+
+                    List
+                 
+                    {this.props.items.map((result, index) => (
+                        
+                             <p key={index}>Hello, {result}</p>
+
+                        
+       
+    ))}
+                   
+
+                    </div>
+
+
 
 
 
@@ -13,6 +33,7 @@ class List extends React.Component {
 
     }
 
+    
 }
 
 export default List;
