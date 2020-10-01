@@ -12,18 +12,16 @@ class List extends React.Component {
 
                     List
                  
-                    {this.props.items.map((result, index) => (
+                    {this.props.items.map((e) => {
                         
-                             <p key={index}>Hello, {result}</p>
+                 return <ul key={e}>{e.price} and {e.input}</ul>
+                 
 
-                        
        
-    ))}
+                     })}
                    
 
                     </div>
-
-
 
 
 

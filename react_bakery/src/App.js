@@ -33,17 +33,18 @@ class App extends React.Component {
   }
 
 
-  addItem(price, input){
+  addItem(input, price){
 
     let obj = {
-      input:'input',
-      price:'price'
+      input:input,
+      price:price
      
     }
 
     let stock = this.state.items
  
     stock.push(obj)
+
     console.log(this.state.items)
 
   }
@@ -70,7 +71,7 @@ class App extends React.Component {
           min={min}
           max={max}
          callback={this.addItem}/>}
-        {this.state.activeTab === 'list' && <List />}
+        {this.state.activeTab === 'list' && <List items={this.state.items}/>}
         {this.state.activeTab === 'pay' && <Pay />}
 
 
