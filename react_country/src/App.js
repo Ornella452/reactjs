@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from './components/Button';
 
 class App extends Component {
 
@@ -9,49 +10,62 @@ class App extends Component {
 
     this.state = {
       name: '',
-      capital: "dd",
+      capital: "",
       flag: "",
       population: 0,
       region: "",
 
     }
-
-    this.componentDidMount = this.componentDidMount.bind(this)
-
-
   }
 
 
 
 
-  componentDidMount() {
+  componentDidMount(country) {
 
-    fetch("https://restcountries.eu/rest/v2/name/france")
+
+    const url = `https://restcountries.eu/rest/v2/name/${country}`;
+
+
+    fetch(url)
       .then(res => res.json())
       .then(json =>
         this.setState({
-          name: json.name,
-          capital: json.capital,
-          flag: json.flag,
-          population: json.population,
-          region: json.region,
-        }));
+          name: json[0].name,
+          capital: json[0].capital,
+          flag: json[0].flag,
+          population: json[0].population,
+          region: json[0].region,
+        }))
+      .catch(error => error);
+
+
+
+    console.log(this.state)
 
 
   }
+
 
 
   render() {
     return (
       <div className="App">
-        <p name={this.state.name}>{this.state.name}</p>
-        <p capital={this.state.capital}>{this.state.capital}</p>
-        <p flag={this.state.flag}>{this.state.flag}</p>
-        <p population={this.state.population}>{this.state.population}</p>
-        <p region={this.state.region}>{this.state.region}</p>
+
+        <p> name= {this.state.name}</p>
+        <p> capital= {this.state.capital}</p>
+        <p> flag= {this.state.flag}</p>
+        <p> population= {this.state.population}</p>
+        <p> region= {this.state.region}</p>
+
+        <Button onClick={this.componentDidMount.bind(this, 'france')}>France</Button>
+        <Button onClick={this.componentDidMount.bind(this, 'brazil')}>Brazil</Button>
+        <Button onClick={this.componentDidMount.bind(this, 'croatia')}>Croatia</Button>
 
 
       </div>
+
+
     );
   }
 }
