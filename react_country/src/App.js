@@ -14,38 +14,38 @@ class App extends Component {
       capital: "",
       flag: "",
       population: 0,
-   
+
 
     }
 
-   
 
-    
- 
+
+
+
   }
 
   handleClick = (country) => {
-  
-  
 
-   fetch(country)
-   .then(res => res.json())
-   .then(json =>
-    
-     this.setState({
-       name: json[0].name,
-       capital: json[0].capital,
-       flag: json[0].flag,
-       population: json[0].population,
-       region: json[0].region,
-     })
-    
-     );
-     
- console.log(this.state)
- console.log(country)
- 
-  
+
+
+    fetch(country)
+      .then(res => res.json())
+      .then(json =>
+
+        this.setState({
+          name: json[0].name,
+          capital: json[0].capital,
+          flag: json[0].flag,
+          population: json[0].population,
+          region: json[0].region,
+        })
+
+      );
+
+    console.log(this.state)
+    console.log(country)
+
+
   }
 
   componentDidMount() {
@@ -58,7 +58,7 @@ class App extends Component {
     return (
       <div className="App">
 
-<p> name= {this.state.name}</p>
+        <p> name= {this.state.name}</p>
         <p> capital= {this.state.capital}</p>
         <p> flag= {this.state.flag}</p>
         <p> population= {this.state.population}</p>
