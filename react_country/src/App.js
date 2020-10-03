@@ -16,18 +16,20 @@ class App extends Component {
       region: "",
 
     }
+    
+  }
+
+  handleClick = (country) => {
+    const url = `https://restcountries.eu/rest/v2/name/${country}`;
+
+   console.log(url)
+
   }
 
 
+  componentDidMount() {
 
-
-  componentDidMount(country) {
-
-
-    const url = `https://restcountries.eu/rest/v2/name/${country}`;
-
-
-    fetch(url)
+    fetch(this.handleClick())
       .then(res => res.json())
       .then(json =>
         this.setState({
@@ -58,9 +60,9 @@ class App extends Component {
         <p> population= {this.state.population}</p>
         <p> region= {this.state.region}</p>
 
-        <Button onClick={this.componentDidMount.bind(this, 'france')}>France</Button>
-        <Button onClick={this.componentDidMount.bind(this, 'brazil')}>Brazil</Button>
-        <Button onClick={this.componentDidMount.bind(this, 'croatia')}>Croatia</Button>
+        <Button onClick={() => this.componentDidMount('france')}>France</Button>
+        <Button onClick={() => this.handleClick('brazil')}>Brazil</Button>
+        <Button onClick={() => this.handleClick('croatia')}>Croatia</Button>
 
 
       </div>
