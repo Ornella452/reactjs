@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from './components/Button';
+import Card from './components/Card';
 
 
 class App extends Component {
@@ -15,20 +16,20 @@ class App extends Component {
       flag: "",
       population: 0,
 
-
     }
-
-
-
-
 
   }
 
-  handleClick = (country) => {
+  componentDidMount() {
+    this.handleClick('france')
 
+  }
 
+  handleClick(country) {
 
-    fetch(country)
+    const url = `https://restcountries.eu/rest/v2/name/${country}`;
+
+    fetch(url)
       .then(res => res.json())
       .then(json =>
 
@@ -40,32 +41,29 @@ class App extends Component {
           region: json[0].region,
         })
 
-      );
+      ).then(console.log('ligne 44 ', this.state))
 
-    console.log(this.state)
-    console.log(country)
-
-
+    console.log('ligne 46', country)
   }
 
-  componentDidMount() {
-
-    this.handleClick(`https://restcountries.eu/rest/v2/name/france`)
-  }
 
 
   render() {
     return (
       <div className="App">
 
-        <p> name= {this.state.name}</p>
-        <p> capital= {this.state.capital}</p>
-        <p> flag= {this.state.flag}</p>
-        <p> population= {this.state.population}</p>
-        <p> region= {this.state.region}</p>
-        <Button onClick={this.componentDidMount.bind(this, 'france')}>France</Button>
-        <Button onClick={this.componentDidMount.bind(this, 'brazil')}>Brazil</Button>
-        <Button onClick={this.componentDidMount.bind(this, 'croatia')}>Croatia</Button>
+        <Card
+          name={this.state.name}
+          capital={this.state.capital}
+          flag={this.state.flag}
+          population={this.state.population}
+          region={this.state.region}></Card>
+
+        <Button onClick={() => this.handleClick('france')}>France</Button>
+        <Button onClick={() => this.handleClick('brazil')}>Brazil</Button>
+        <Button onClick={() => this.handleClick('croatia')}>Croatia</Button>
+
+
 
       </div>
     );
@@ -73,3 +71,164 @@ class App extends Component {
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*import React, { Component } from 'react';
+import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from './components/Button';
+import Card from './components/Card';
+
+
+class App extends Component {
+
+  constructor() {
+    super();
+
+    this.state = {
+      name: '',
+      capital: "",
+      flag: "",
+      population: 0,
+      items: ""
+
+    }
+
+    this.handleClickF = this.handleClickF.bind(this)
+    this.handleClickB = this.handleClickB.bind(this)
+    this.handleClickC = this.handleClickC.bind(this)
+
+  }
+
+  componentDidMount() {
+
+    fetch(`https://restcountries.eu/rest/v2/name/france`)
+      .then(res => res.json())
+      .then(json =>
+        this.setState({
+          name: json[0].name,
+          capital: json[0].capital,
+          flag: json[0].flag,
+          population: json[0].population,
+          region: json[0].region,
+        })
+      )
+      .then(console.log(this.state));
+
+  }
+  handleClickF() {
+
+    fetch(`https://restcountries.eu/rest/v2/name/france`)
+      .then(res => res.json())
+      .then(json =>
+        this.setState({
+          name: json[0].name,
+          capital: json[0].capital,
+          flag: json[0].flag,
+          population: json[0].population,
+          region: json[0].region,
+        })
+      )
+      .then(console.log(this.state));
+
+
+
+  }
+
+  handleClickB() {
+
+    fetch(`https://restcountries.eu/rest/v2/name/brazil`)
+      .then(res => res.json())
+      .then(json =>
+        this.setState({
+          name: json[0].name,
+          capital: json[0].capital,
+          flag: json[0].flag,
+          population: json[0].population,
+          region: json[0].region,
+        })
+      ).then(console.log(this.state));
+
+  }
+  handleClickC() {
+
+    fetch(`https://restcountries.eu/rest/v2/name/croatia`)
+      .then(res => res.json())
+      .then(json =>
+        this.setState({
+          name: json[0].name,
+          capital: json[0].capital,
+          flag: json[0].flag,
+          population: json[0].population,
+          region: json[0].region,
+        })
+      ).then(console.log(this.state));
+
+  }
+
+
+
+
+  render() {
+    return (
+      <div className="App">
+
+        <Card
+          name={this.state.name}
+          capital={this.state.capital}
+          flag={this.state.flag}
+          population={this.state.population}
+          region={this.state.region}></Card>
+
+
+        <Button onClick={this.handleClickF}>France</Button>
+        <Button onClick={this.handleClickB}>Brazil</Button>
+        <Button onClick={this.handleClickC}>Croatia</Button>
+
+
+        {this.state.items === 'france'}
+        {this.state.items === 'brazil'}
+        {this.state.items === 'croatia'}
+
+      </div>
+    );
+  }
+}
+
+export default App;
+
+
+
+
+*/
+
+
+// version sans la méthode componentDidMount
+
