@@ -51,17 +51,19 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        
+        <Button onClick={() => this.handleClick('france')}>France</Button>
+        <Button onClick={() => this.handleClick('brazil')}>Brazil</Button>
+        <Button onClick={() => this.handleClick('croatia')}>Croatia</Button>
 
         <Card
           name={this.state.name}
           capital={this.state.capital}
           flag={this.state.flag}
           population={this.state.population}
-          region={this.state.region}></Card>
+          region={this.state.region}
+          flag={this.state.flag}></Card>
 
-        <Button onClick={() => this.handleClick('france')}>France</Button>
-        <Button onClick={() => this.handleClick('brazil')}>Brazil</Button>
-        <Button onClick={() => this.handleClick('croatia')}>Croatia</Button>
 
 
 
