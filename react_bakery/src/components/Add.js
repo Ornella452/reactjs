@@ -45,9 +45,9 @@ class Add extends React.Component {
 
     render() {
         return (
-            <div className="container App">
-                <div className="form-inline App">
-                <input className="form-control"
+            <div className="container">
+                <div className="form-inline App p-2 p-3 align-items-center">
+                <input className="form-control col-7"
                     type="text"
                     onChange={this.updateInput}
                 />

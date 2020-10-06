@@ -15,18 +15,10 @@ class App extends Component {
       flag: "",
       population: 0,
 
-
     }
-
-
-
-
-
   }
 
   handleClick = (country) => {
-
-
 
     fetch(country)
       .then(res => res.json())
@@ -50,7 +42,11 @@ class App extends Component {
 
   componentDidMount() {
 
+   // const url = `https://restcountries.eu/rest/v2/name/${ok}`;
+
     this.handleClick(`https://restcountries.eu/rest/v2/name/france`)
+
+    //console.log(url)
   }
 
 
