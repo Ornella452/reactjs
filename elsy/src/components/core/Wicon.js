@@ -4,7 +4,7 @@ class Wicon extends React.Component{
     render(){
         return(
             
-            <span class="material-icons"  style={{fontSize: 100}}>
+            <span class="material-icons"  style={this.props.style}>
             <p>{this.props.name}</p>
             </span>
         )

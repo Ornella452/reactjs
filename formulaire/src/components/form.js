@@ -5,35 +5,52 @@ import { Form, Button } from "react-bootstrap";
 
 class Formulaire extends React.Component {
 
+  state = {
+    email: "",
+    password:"",
 
-  render(){
-    return(
-
-    <div className="mb-3 col-md-6">
+  }
 
 
-    <Form.Label htmlFor="inputPassword5">Password</Form.Label>
-    <Form.Control
-      type="password"
-      id="inputPassword5"
-      aria-describedby="passwordHelpBlock"
-    />
-    <Form.Text id="passwordHelpBlock" muted>
-      Your password must be 8-20 characters long, contain letters and numbers, and
-      must not contain spaces, special characters, or emoji.
-    </Form.Text>
-                <div className="mb-3 col-md-6">
-                <Button color="primary" type="submit">
-                  Submit Form
+  render() {
+    return (
+
+      <div className="mb-3 col-md-6">
+
+        
+<Form.Label htmlFor="inputEmail">Email</Form.Label>
+        <Form.Control
+        name= "email"
+          type="email"
+          id="inputPassword5"
+          aria-describedby="passwordHelpBlock"
+        />
+
+
+        <Form.Label htmlFor="inputPassword5">Password</Form.Label>
+
+        <Form.Control
+        name="password"
+          type="password"
+          id="inputPassword5"
+          aria-describedby="passwordHelpBlock"
+        />
+          <input type="checkbox" class="form-check-input" id="exampleCheck1"></input>
+         <label class="form-check-label" for="exampleCheck1">Check me out</label>
+
+        <div className="mb-3 col-md-12">
+          <p></p>
+          <Button color="primary" type="submit">
+            Envoyé
                 </Button>
 
 
-                </div>
+        </div>
 
-                </div>
-             
-           
-          );
-        }
-      }
+      </div>
+
+
+    );
+  }
+}
 export default Formulaire;

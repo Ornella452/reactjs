@@ -14,7 +14,7 @@
   
 }
 .box:nth-child(odd) { /* impaires*/
-    background: #AAA;
+    background:pink;
    
  
 }
