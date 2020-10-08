@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import Discover from './components/Discover';
 import DiscoverBattle from './components/DiscoverBattle';
 import MyList from './components/MyList';
 import Popular from './components/Popular';
 import PopularBattle from './components/PopularBattle';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 class App extends Component {
   render() {
