@@ -2,7 +2,6 @@ import React from 'react';
 import Card from './movie/Card';
 import placeholder from '../img/placeholder.png';
 
-
 class Popular extends React.Component {
 
     constructor() {
@@ -14,6 +13,7 @@ class Popular extends React.Component {
             overview: "",
             currentMovice: null,
             def: placeholder,
+           
 
 
 
@@ -30,7 +30,6 @@ class Popular extends React.Component {
                     overview: json.results[0].overview,
                     movies: json.results
                 })
-
              
             });
     }
@@ -40,12 +39,14 @@ class Popular extends React.Component {
         fetch(poster_path)
             .then(res => res.json())
             .then(json => {
-
-                console.log(json)
                 this.setState({
                     currentMovice: json
                 })
-                
+               /* if(json.success){
+                    this.setState({
+                        def: json.def
+                    })
+                }*/console.log(json)
             })
     }
 
