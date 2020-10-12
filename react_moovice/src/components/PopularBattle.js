@@ -8,14 +8,12 @@ class PopularBattle extends React.Component {
     constructor() {
         super();
         this.state = {
-           
             currentPage: 1,
-            movies: [],
-
-
-
-
+            movies: []
         }
+
+
+        this.choseFilm = this.choseFilm.bind(this);
     }
 
     componentDidMount() {
@@ -25,8 +23,8 @@ class PopularBattle extends React.Component {
                 const movies = json.results.map((elem) => {
 
                     return {
-                        
-                        poster_path: elem.poster_path ? <img src={`https://image.tmdb.org/t/p/w300/${elem.poster_path}`} alt=""/>: placeholder,
+
+                        poster_path: elem.poster_path ? <img src={`https://image.tmdb.org/t/p/w300/${elem.poster_path}`} alt="" /> : placeholder,
                         title: elem.title,
                         overview: elem.overview,
 
@@ -39,25 +37,41 @@ class PopularBattle extends React.Component {
     }
 
 
+   choseFilm(){
+        console.log("chosefilm ok")
+
+        this.setState({
+            currentPage : this.state.currentPage + 1,
+        })
+    }
+
+
 
     render() {
+        const {
+            movies,
+            currentPage,
+        } = this.state;
 
-        console.log('popularBattle hello', this.state)
+        const secondIndex = currentPage * 2;
+        const firstIndex = secondIndex - 1;
 
-        const firstmovies = this.state.movies[0]
+        const firstmovies = movies[firstIndex];
+        const secondmovies = movies[secondIndex];
+
         console.log('heyyy', firstmovies)
-        const secondmovies = this.state.movies[1]
         console.log('heyyy', secondmovies)
-        return (
+
+        if (this.state.movies.length === 0) {
+            return <p>Loading...</p>
+        } else return (
             <div className="row">
-                <div className="col-6">
-                <Card {...firstmovies}/>
+                <div className="col-6" onClick={this.choseFilm}>
+                    <Card title={firstmovies.title} overview={firstmovies.overview} poster_path={firstmovies.poster_path} />
                 </div>
-                <div className="col-6">
-                <Card {...secondmovies}/>
+                <div className="col-6" onClick={this.choseFilm}>
+                    <Card title={secondmovies.title} overview={secondmovies.overview} poster_path={secondmovies.poster_path} />
                 </div>
-                
-                
             </div>
         )
     }
