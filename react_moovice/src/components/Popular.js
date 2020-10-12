@@ -62,7 +62,7 @@ class Popular extends React.Component {
                     {this.state.movies.map((elem, index) => {
                         return (
                             <span onClick={() => this.click(elem.poster_path)} key={index}>
-                                <img src={`https://image.tmdb.org/t/p/w300/${elem.poster_path}`}/>
+                                <img src={`https://image.tmdb.org/t/p/w300/${elem.poster_path}`} alt=""/>
                              
                         <p>{elem.title}</p>
                         <p>{elem.overview}</p>
