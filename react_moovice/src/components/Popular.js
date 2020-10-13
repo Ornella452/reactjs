@@ -14,10 +14,8 @@ class Popular extends React.Component {
             currentMovice: null,
             def: placeholder,
            
-
-
-
         }
+
     }
 
     componentDidMount() {
@@ -25,14 +23,17 @@ class Popular extends React.Component {
             .then(res => res.json())
             .then(json => {
                 this.setState({
-                    poster_path: json.results[0].poster_path,
-                    title: json.results[0].title,
-                    overview: json.results[0].overview,
+                    poster_path: json.results.poster_path,
+                    title: json.results.title,
+                    overview: json.results.overview,
                     movies: json.results
                 })
              
             });
     }
+
+
+                    
 
 
     click(poster_path) {

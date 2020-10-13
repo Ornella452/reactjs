@@ -23,7 +23,7 @@ class PopularBattle extends React.Component {
                 const movies = json.results.map((elem) => {
 
                     return {
-
+                        elem: elem.id,
                         poster_path: elem.poster_path ? <img src={`https://image.tmdb.org/t/p/w300/${elem.poster_path}`} alt="" /> : placeholder,
                         title: elem.title,
                         overview: elem.overview,
@@ -37,11 +37,19 @@ class PopularBattle extends React.Component {
     }
 
 
-   choseFilm(){
+    choseFilm(id) {
         console.log("chosefilm ok")
+        let myList = [];
+        if (!JSON.parse(localStorage.getItem('my-Liste'))) {
+            myList = localStorage.getItem('my-Liste')
+            
+        }
+        myList.push(id)
+        localStorage.setItem('mylist', JSON.stringify(myList))
+        console.log('mylist', myList)
 
         this.setState({
-            currentPage : this.state.currentPage + 1,
+            currentPage: this.state.currentPage + 1,
         })
     }
 
@@ -66,10 +74,10 @@ class PopularBattle extends React.Component {
             return <p>Loading...</p>
         } else return (
             <div className="row">
-                <div className="col-6" onClick={this.choseFilm}>
+                <div className="col-6" onClick={() => this.choseFilm(firstmovies.id)}>
                     <Card title={firstmovies.title} overview={firstmovies.overview} poster_path={firstmovies.poster_path} />
                 </div>
-                <div className="col-6" onClick={this.choseFilm}>
+                <div className="col-6" onClick={() => this.choseFilm(secondmovies.id)}>
                     <Card title={secondmovies.title} overview={secondmovies.overview} poster_path={secondmovies.poster_path} />
                 </div>
             </div>
