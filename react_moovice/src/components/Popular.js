@@ -14,10 +14,8 @@ class Popular extends React.Component {
             currentMovice: null,
             def: placeholder,
            
-
-
-
         }
+
     }
 
     componentDidMount() {
@@ -25,14 +23,17 @@ class Popular extends React.Component {
             .then(res => res.json())
             .then(json => {
                 this.setState({
-                    poster_path: json.results[0].poster_path,
-                    title: json.results[0].title,
-                    overview: json.results[0].overview,
+                    poster_path: json.results.poster_path,
+                    title: json.results.title,
+                    overview: json.results.overview,
                     movies: json.results
                 })
              
             });
     }
+
+
+                    
 
 
     click(poster_path) {
@@ -62,7 +63,7 @@ class Popular extends React.Component {
                     {this.state.movies.map((elem, index) => {
                         return (
                             <span onClick={() => this.click(elem.poster_path)} key={index}>
-                                <img src={`https://image.tmdb.org/t/p/w300/${elem.poster_path}`}/>
+                                <img src={`https://image.tmdb.org/t/p/w300/${elem.poster_path}`} alt=""/>
                              
                         <p>{elem.title}</p>
                         <p>{elem.overview}</p>
