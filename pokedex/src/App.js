@@ -13,14 +13,8 @@ class App extends Component {
       weight: 0,
       type: "",
       src: "",
-     pokelist: []
-      
-    
 
     }
-
- 
-
   }
   componentDidMount() {
 
@@ -38,15 +32,13 @@ class App extends Component {
           weight: json.weight,
           type: json.types[0].type.name,
           src: `https://pokeres.bastionbot.org/images/pokemon/${id}.png`,
-          
-
-
-        })
+        
+        })// end setState
 
       })
   }
   
-  PokemonList(){
+ /* PokemonList(){
 
  
     fetch('https://pokeapi.co/api/v2/pokemon/?limit=25')
@@ -61,9 +53,12 @@ class App extends Component {
       console.log('heyy', json.results)
     })
   }
-
+*/
   render() {
     return (
+
+      
+
       <div className="App">
 
         <Pokemon name={this.state.name}
@@ -74,22 +69,15 @@ class App extends Component {
 
           
 
-        
-       
-<MenuPokemon onClick={() => this.pokedex()}/>
-<MenuPokemon onClick={() => this.pokedex("2")}><img src="https://pokeres.bastionbot.org/images/pokemon/2.png" alt="pokemon" /></MenuPokemon>
+<MenuPokemon onClick={() => this.pokedex('1')}><img src="https://pokeres.bastionbot.org/images/pokemon/1.png" alt="pokemon" /></MenuPokemon>
+<MenuPokemon onClick={() => this.pokedex('2')}><img src="https://pokeres.bastionbot.org/images/pokemon/2.png" alt="pokemon" /></MenuPokemon>
 
-       
-       
-        
-        
-
-       
-        
-       
+    
 
       </div>
-    );
+
+
+)
   }
 }
 
