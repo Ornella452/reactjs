@@ -11,9 +11,6 @@ class Popular extends React.Component {
             poster_path: "",
             title: "",
             overview: "",
-            currentMovice: null,
-            def: placeholder,
-           
         }
 
     }
@@ -22,55 +19,33 @@ class Popular extends React.Component {
         fetch("https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=134d92c3d72c8501356da2496ace8c7e")
             .then(res => res.json())
             .then(json => {
-                this.setState({
-                    poster_path: json.results.poster_path,
-                    title: json.results.title,
-                    overview: json.results.overview,
-                    movies: json.results
+                const movies = json.results.map((elem) => {
+                    return {
+
+                        title: elem.title,
+                        overview: elem.overview,
+                        poster_path: elem.poster_path ? `https://image.tmdb.org/t/p/w300/${elem.poster_path} ` : placeholder
+
+                    }
                 })
-             
-            });
-    }
+                this.setState({ movies })
 
-
-                    
-
-
-    click(poster_path) {
-        fetch(poster_path)
-            .then(res => res.json())
-            .then(json => {
-                this.setState({
-                    currentMovice: json
-                })
-               /* if(json.success){
-                    this.setState({
-                        def: json.def
-                    })
-                }*/console.log(json)
+                console.log('movice', json.results)
             })
+
     }
+
+
+
 
     render() {
         return (
             <div>
-                <Card
-                    title={this.state.title}
-                    overview={this.state.overview}
-                    poster_path={this.state.poster_path}/>
+                {this.state.movies.map((elem, index) => {
+                    return <Card key={index} title={elem.title} description={elem.description} imgUrl={elem.imgUrl} />
 
-                <section>
-                    {this.state.movies.map((elem, index) => {
-                        return (
-                            <span onClick={() => this.click(elem.poster_path)} key={index}>
-                                <img src={`https://image.tmdb.org/t/p/w300/${elem.poster_path}`} alt=""/>
-                             
-                        <p>{elem.title}</p>
-                        <p>{elem.overview}</p>
-                            </span>
-                        )
-                    })}
-                </section>
+                })}
+
             </div>
         )
     }
