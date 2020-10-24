@@ -1,11 +1,23 @@
 import Navigation from '../components/Navigation';
 import City from '../components/City';
 import React from 'react';
-
+import Home from '../components/core/Home';
+import Api from  '../utils/Api';
 
 class HomeContainer extends React.Component {
+  state = {
+    cities: [],
+  }
+
+  componentDidMount() { 
+    
+   
+   Api.getHome();
+    
+  }
     render() {
       return (
+
         <div
           className='container-fluid'
           style={{
@@ -21,7 +33,7 @@ class HomeContainer extends React.Component {
             </div>
             <div
               className='col-lg-8 col-md-4 col-12'>
-              Une autre phrase
+              <Home></Home>
             </div>
           </div>
         </div>
