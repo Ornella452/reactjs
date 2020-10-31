@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 
 class Card extends React.Component {
@@ -7,14 +8,28 @@ class Card extends React.Component {
     render() {
         return (
             <div>
-                <div> <p> poster_path={this.props.poster_path}</p></div>
-                <p>title={this.props.title}</p>
-                <p> overview={this.props.overview}</p>
-              
-                
+                {this.props.poster_path}
+                {this.props.title}
+                {this.props.overview}
+
+
             </div>
         )
     }
-    }
+}
+
+Card.propTypes = {
+    title: PropTypes.string,
+    overview: PropTypes.string,
+    poster_path: PropTypes.string,
+
+};
+
+Card.defaultProps = {
+    title: " ",
+    overview: " ",
+    poster_path: " ",
+
+};
 
 export default Card
