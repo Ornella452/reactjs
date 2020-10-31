@@ -6,6 +6,7 @@ class List extends React.Component {
             <div>My List</div>
         )
     }
+    
 }
 
 export default List;
