@@ -24,7 +24,7 @@ class Popular extends React.Component {
 
                         title: elem.title,
                         overview: elem.overview,
-                        poster_path: elem.poster_path ? `https://image.tmdb.org/t/p/w300/${elem.poster_path} ` : placeholder
+                        poster_path: elem.poster_path ? <img src={`https://image.tmdb.org/t/p/w300/${elem.poster_path}`} alt="" /> : placeholder
 
                     }
                 })
@@ -42,7 +42,7 @@ class Popular extends React.Component {
         return (
             <div>
                 {this.state.movies.map((elem, index) => {
-                    return <Card key={index} title={elem.title} description={elem.description} imgUrl={elem.imgUrl} />
+                    return <Card key={index} title={elem.title} overview={elem.overview} poster_path={elem.poster_path} />
 
                 })}
 

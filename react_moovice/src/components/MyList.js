@@ -16,14 +16,18 @@ class List extends React.Component {
     componentDidMount() {
 
 
-
+    if (this.state.movieIds === null){
+        return ( <div>
+            <p>List est vide</p>
+        </div>)
+    }
         const arrayFetch = this.state.movieIds.map(elem => {
 
             const url = `http://api.themoviedb.org/3/movie/${elem}?api_key=134d92c3d72c8501356da2496ace8c7e`;
 
             return fetch(url).then(res => res.json())
 
-
+        
         })
 
 
@@ -65,11 +69,11 @@ class List extends React.Component {
             <div>
 
                 {
-                    this.state.movies.map(elem => {
+                    this.state.movies.map((elem, key)=> {
 
                         return (
 
-                            <Card title={elem.title} overview={elem.overview} poster_path={elem.poster_path} ></Card>
+                            <Card key={key} title={elem.title} overview={elem.overview} poster_path={elem.poster_path} ></Card>
                         )
 
                     })
